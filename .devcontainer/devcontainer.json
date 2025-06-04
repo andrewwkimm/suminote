@@ -1,0 +1,34 @@
+{
+	"name": "Ruby on Rails & Postgres",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"Shopify.ruby-lsp",
+				"bradlc.vscode-tailwindcss",
+				"formulahendry.auto-rename-tag",
+				"ms-vscode.vscode-json"
+			],
+			"settings": {
+				"ruby.lsp.enabledFeatures": {
+					"codeActions": true,
+					"diagnostics": true,
+					"documentHighlights": true,
+					"documentSymbols": true,
+					"foldingRanges": true,
+					"formatting": true,
+					"hover": true,
+					"inlayHint": true,
+					"semanticHighlighting": true
+				}
+			}
+		}
+	},
+	
+	"forwardPorts": [3000, 5432],
+	"remoteUser": "vscode",
+	"postCreateCommand": "bash ./.devcontainer/setup.sh"
+}

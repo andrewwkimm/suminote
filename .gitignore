@@ -1,0 +1,28 @@
+# Absolute paths
+/.bundle
+/.env
+/.byebug_history
+/coverage
+/log/*
+/tmp/*
+/storage/*
+/public/assets
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+/config/master.key
+/config/credentials/*.key
+
+# Patterns
+.DS_Store
+*.rbc
+*.sassc
+.sass-cache/
+
+# Exclusions
+!/log/.keep
+!/tmp/.keep
+!/storage/.keep
+!/public/assets/.keep
+!/scratch/README.md

@@ -1,0 +1,31 @@
+PreCommit:
+  RuboCop:
+    enabled: true
+    on_warn: fail
+    command: ['bundle', 'exec', 'rubocop']
+    flags: ['--format', 'emacs', '--force-exclusion', '--display-cop-names']
+
+  BundleCheck:
+    enabled: true
+
+  RailsSchemaUpToDate:
+    enabled: true
+
+  TrailingWhitespace:
+    enabled: true
+    exclude:
+      - '**/*.md'
+
+  YamlSyntax:
+    enabled: true
+
+PrePush:
+  RSpec:
+    enabled: true
+    command: ['bundle', 'exec', 'rspec']
+
+CommitMsg:
+  TextWidth:
+    enabled: true
+    max_subject_width: 50
+    max_body_width: 72

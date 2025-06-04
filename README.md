@@ -1,3 +1,3 @@
-## ruby-on-rails-devcontainer
+## SumiNote
 
-Personal set up for a Ruby on Rails DevContainer.
+Yet another productivity, note taking app.

@@ -1,27 +1,23 @@
 class NotesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_note, only: %i[ show edit update destroy ]
 
-  # GET /notes or /notes.json
   def index
-    @notes = Note.all
+    @notes = current_user.notes.all
   end
 
-  # GET /notes/1 or /notes/1.json
   def show
   end
 
-  # GET /notes/new
   def new
-    @note = Note.new
+    @note = current_user.notes.build
   end
 
-  # GET /notes/1/edit
   def edit
   end
 
-  # POST /notes or /notes.json
   def create
-    @note = Note.new(note_params)
+    @note = current_user.notes.build(note_params)
 
     respond_to do |format|
       if @note.save
@@ -34,7 +30,6 @@ class NotesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /notes/1 or /notes/1.json
   def update
     respond_to do |format|
       if @note.update(note_params)
@@ -47,24 +42,22 @@ class NotesController < ApplicationController
     end
   end
 
-  # DELETE /notes/1 or /notes/1.json
   def destroy
     @note.destroy!
 
     respond_to do |format|
-      format.html { redirect_to notes_path, status: :see_other, notice: "Note was successfully destroyed." }
+      format.html { redirect_to notes_path, status: :see_other, notice: "Note was successfully deleted." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_note
-      @note = Note.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def note_params
-      params.expect(note: [ :title, :content ])
-    end
+  def set_note
+    @note = current_user.notes.find(params[:id])
+  end
+
+  def note_params
+    params.require(:note).permit(:title, :content)
+  end
 end

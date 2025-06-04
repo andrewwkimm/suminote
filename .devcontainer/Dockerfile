@@ -12,8 +12,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
 RUN apt-get update && apt-get install -y \
     imagemagick \
     redis-tools \
-    && rm -rf /var/lib/apt/lists/* \
-    gem install overcommit
+    && rm -rf /var/lib/apt/lists/*
 
 # Rails development environment
 ENV RAILS_DEVELOPMENT_HOSTS=".githubpreview.dev,.preview.app.github.dev,.app.github.dev"

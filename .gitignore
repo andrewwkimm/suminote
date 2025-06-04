@@ -26,3 +26,5 @@
 !/storage/.keep
 !/public/assets/.keep
 !/scratch/README.md
+/app/assets/builds/*
+!/app/assets/builds/.keep

@@ -81,3 +81,5 @@ end
 gem "hotwire-rails", "~> 0.1.3"
 
 gem "tailwindcss-rails", "~> 4.2"
+
+gem "devise", "~> 4.9"

@@ -1,3 +1,7 @@
+gem_group :development do
+  gem 'overcommit', require: false
+end
+
 gem_group :development, :test do
   gem 'rspec-rails'
 end

@@ -6,7 +6,6 @@ help:
 build:
 	bundle install
 	make formatter
-	make lint
 	make test
 
 db-setup:

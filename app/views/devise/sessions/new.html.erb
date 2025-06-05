@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign In - SumiNote</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .floating-label {
+      position: relative;
+    }
+
+    .floating-label input {
+      padding: 18px 16px 8px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.2s ease;
+      background: white;
+    }
+
+    .floating-label input:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    .floating-label label {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6b7280;
+      font-size: 16px;
+      transition: all 0.2s ease;
+      pointer-events: none;
+      background: white;
+      padding: 0 4px;
+    }
+
+    .floating-label input:focus + label,
+    .floating-label input:not(:placeholder-shown) + label {
+      top: 0;
+      transform: translateY(-50%);
+      font-size: 12px;
+      color: #6366f1;
+      font-weight: 500;
+    }
+
+    .brand-wrapper {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .balloon {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      padding: 40px;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .action-button {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .action-button.primary {
+      background: #6366f1;
+      color: white;
+    }
+
+    .action-button.primary:hover {
+      background: #5855eb;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .action-button.secondary {
+      background: #f9fafb;
+      color: #374151;
+      border: 2px solid #e5e7eb;
+    }
+
+    .action-button.secondary:hover {
+      background: #f3f4f6;
+      border-color: #d1d5db;
+    }
+
+    .break {
+      position: relative;
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .break::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #e5e7eb;
+    }
+
+    .break__content {
+      background: white;
+      padding: 0 16px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="brand-wrapper">
+    <div class="balloon">
+      <div class="text-center mb-8">
+        <img class="mx-auto h-16 w-auto mb-4" src="/assets/images/suminote.png" alt="SumiNote">
+        <h1 class="text-2xl font-bold text-gray-900 mb-2">Sign in to SumiNote</h1>
+        <p class="text-gray-600">Welcome back to your digital notebook</p>
+      </div>
+
+      <!-- Google Sign In Button (if you want to add it later) -->
+      <!--
+      <button type="button" class="action-button secondary mb-4">
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path fill="#4285f4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34a853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#fbbc05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+          <path fill="#ea4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        Sign in with Google
+      </button>
+
+      <div class="break">
+        <div class="break__content">Or, use your email address</div>
+      </div>
+      -->
+
+      <form action="/users/signin" method="post">
+        <!-- This is where Rails would put the authenticity token -->
+        <!-- <%= csrf_meta_tags %> -->
+
+        <div class="space-y-6">
+          <div class="floating-label">
+            <input
+              type="email"
+              name="user[email]"
+              id="user_email"
+              required
+              placeholder=" "
+              autocomplete="email"
+            >
+            <label for="user_email">Email address</label>
+          </div>
+
+          <div class="floating-label">
+            <input
+              type="password"
+              name="user[password]"
+              id="user_password"
+              required
+              placeholder=" "
+              autocomplete="current-password"
+            >
+            <label for="user_password">Password</label>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                name="user[remember_me]"
+                id="user_remember_me"
+                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              >
+              <label for="user_remember_me" class="ml-2 block text-sm text-gray-700">
+                Remember me
+              </label>
+            </div>
+
+            <a href="/users/password/new" class="text-sm text-indigo-600 hover:text-indigo-500">
+              Forgot your password?
+            </a>
+
+            <a href="/signup" class="text-indigo-600 hover:text-indigo-500 font-medium">
+              Create an account
+            </a>
+          </div>
+
+          <button type="submit" class="action-button primary">
+            Sign in to SumiNote
+          </button>
+        </div>
+      </form>
+
+      <div class="mt-8 text-center">
+        <p class="text-sm text-gray-600">
+          New to SumiNote?
+          <a href="/users/signup" class="text-indigo-600 hover:text-indigo-500 font-medium">
+            Create an account
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
